@@ -2,85 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-    <link rel="stylesheet" href="/style.css" />
+    <title>Evento Infomat ottobre 2022</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
-  <body>
-    <form class="form-control max-w-[420px] mx-auto px-8">
-      <div>
-        <label class="label" for="nome-azienda">
-          <span class="label-text">Nome azienda/banca</span>
-        </label>
-        <input
-          id="nome-azienda"
-          type="text"
-          class="input input-bordered input-md w-full"
-          required
-        />
-      </div>
-      <div class="md:flex md:gap-2">
-        <div class="flex-1">
-          <label class="label" for="nome">
-            <span class="label-text">Nome</span>
-          </label>
-          <input id="nome" type="text" class="input input-bordered input-md w-full" required />
-        </div>
-        <div class="flex-1">
-          <label class="label" for="cognome">
-            <span class="label-text">Cognome</span>
-          </label>
-          <input id="cognome" type="text" class="input input-bordered input-md w-full" required />
-        </div>
-      </div>
-      <div>
-        <label class="label" for="telefono">
-          <span class="label-text">Numero di telefono</span>
-        </label>
-        <input
-          id="telefono"
-          type="tel"
-          class="input input-bordered input-md input-error w-full"
-          required
-        />
-      </div>
-      <div>
-        <label class="label" for="telefono">
-          <span class="label-text">E-mail</span>
-        </label>
-        <input id="telefono" type="email" class="input input-bordered input-md w-full" required />
-      </div>
-      <div class="pt-2">
-        <div class="label-text">Data:</div>
-        <label class="label justify-start cursor-pointer">
-          <input type="radio" name="data" class="radio" checked required />
-          <span class="pl-3 label-text">25 Ottobre</span>
-        </label>
-        <label class="label justify-start cursor-pointer">
-          <input type="radio" name="data" class="radio" required />
-          <span class="pl-3 label-text">26 Ottobre</span>
-        </label>
-        <label class="label justify-start cursor-pointer">
-          <input type="radio" name="data" class="radio" required />
-          <span class="pl-3 label-text">27 Ottobre</span>
-        </label>
-      </div>
-      <div class="pt-2">
-        <div class="label-text">Ore:</div>
-        <label class="label justify-start cursor-pointer">
-          <input type="radio" name="ora" class="radio" checked required />
-          <span class="pl-3 label-text">9-13</span>
-        </label>
-        <label class="label justify-start cursor-pointer">
-          <input type="radio" name="ora" class="radio" required />
-          <span class="pl-3 label-text">14-17</span>
-        </label>
-      </div>
-      <div class="flex justify-start pt-4">
-        <input class="btn" type="submit" value="Partecipa all'evento" />
-        <div class="label-text-alt pl-2">*compila tutti i campi</div>
-      </div>
-    </form>
+  <body class="min-h-screen">
+    <img
+      class="mx-auto"
+      src="https://www.focusjunior.it/content/uploads/2018/08/gattini-foto-25.jpg"
+    />
+    <div class="flex justify-center pt-10">
+      <a class="btn" href="/public/form-registrazione.html">Partecipa al nostro evento</a>
+    </div>
   </body>
 </html>
