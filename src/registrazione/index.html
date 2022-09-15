@@ -5,150 +5,105 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Evento Infomat ottobre 2022</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="registrazione.js" defer></script>
   </head>
   <body class="min-h-screen">
-    <div class="flex justify-center">
-      <h1 class="pt-4 text-5xl">Compila il seguente form</h1>
-    </div>
-    <form id="form-evento" class="form-control max-w-[420px] mx-auto pt-10 px-8">
-      <div>
-        <label class="label" for="azienda">
-          <span class="label-text">Nome azienda/banca:</span>
-        </label>
-        <input id="azienda" type="text" class="input input-bordered input-md w-full" required />
-      </div>
-      <div class="md:flex md:gap-2">
-        <div class="flex-1">
-          <label class="label" for="nome">
-            <span class="label-text">Nome:</span>
+    <div class="px-4 py-8">
+      <h1 class="text-center text-5xl">Compila il seguente form</h1>
+      <form id="form-evento" class="form-control max-w-[420px] mx-auto pt-10">
+        <div>
+          <label class="label" for="azienda">
+            <span class="label-text">Nome azienda/banca:</span>
           </label>
-          <input id="nome" type="text" class="input input-bordered input-md w-full" required />
+          <input id="azienda" type="text" class="input input-bordered input-md w-full" required />
         </div>
-        <div class="flex-1">
-          <label class="label" for="cognome">
-            <span class="label-text">Cognome:</span>
-          </label>
-          <input id="cognome" type="text" class="input input-bordered input-md w-full" required />
-        </div>
-      </div>
-      <div>
-        <label class="label" for="telefono">
-          <span class="label-text">Numero di telefono:</span>
-        </label>
-        <input id="telefono" type="tel" class="input input-bordered input-md w-full" required />
-      </div>
-      <div>
-        <label class="label" for="email">
-          <span class="label-text">E-mail:</span>
-        </label>
-        <input id="email" type="email" class="input input-bordered input-md w-full" required />
-      </div>
-      <div>
-        <label class="label">
-          <span class="label-text">Data:</span>
-        </label>
-        <select id="data" class="select select-bordered w-full">
-          <option selected>25 ottobre</option>
-          <option>26 ottobre</option>
-          <option>27 ottobre</option>
-        </select>
-      </div>
-      <div>
-        <label class="label">
-          <span class="label-text">Orario:</span>
-        </label>
-        <select id="orario" class="select select-bordered w-full">
-          <option selected>9-13</option>
-          <option>14-17</option>
-        </select>
-      </div>
-      <div class="pt-8">
-        <div class="flex">
-          <input
-            id="submit-button"
-            class="btn btn-outline"
-            type="submit"
-            value="Partecipa all'evento"
-          />
-          <div class="pl-2">
-            <div id="success-message" class="label-text-alt text-success hidden">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="w-6 h-6"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-            </div>
-            <div
-              id="await-result"
-              class="animate-spin w-4 h-4 rounded-full border-2 border-transparent border-t-white hidden"
-            ></div>
-            <div id="invalid-email" class="label-text-alt text-error hidden">e-mail non valida</div>
-            <div id="server-error" class="label-text-alt text-error hidden">riprova più tardi</div>
+        <div class="md:flex md:gap-2">
+          <div class="flex-1">
+            <label class="label" for="nome">
+              <span class="label-text">Nome:</span>
+            </label>
+            <input id="nome" type="text" class="input input-bordered input-md w-full" required />
+          </div>
+          <div class="flex-1">
+            <label class="label" for="cognome">
+              <span class="label-text">Cognome:</span>
+            </label>
+            <input id="cognome" type="text" class="input input-bordered input-md w-full" required />
           </div>
         </div>
-        <div class="pt-1">
-          <div class="label-text-alt pl-2">*compila tutti i campi</div>
+        <div>
+          <label class="label" for="telefono">
+            <span class="label-text">Numero di telefono:</span>
+          </label>
+          <input id="telefono" type="tel" class="input input-bordered input-md w-full" required />
         </div>
-      </div>
-    </form>
-    <script>
-      let form = document.getElementById('form-evento')
-
-      let getValue = (elId) => document.getElementById(elId).value
-
-      form.addEventListener('submit', (e) => {
-        e.preventDefault()
-        emailPattern =
-          /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g
-
-        document.getElementById('await-result').classList.remove('hidden')
-        if (!getValue('email').match(emailPattern)) {
-          document.getElementById('invalid-email').classList.remove('hidden')
-        } else {
-          document.getElementById('invalid-email').classList.add('hidden')
-          document.getElementById('server-error').classList.add('hidden')
-
-          let url = 'https://www.betaservice.it/betaservicerestws/api/generic/registrazioneevento'
-          const options = {
-            method: 'post',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              IdCliente: 7,
-              IdEvento: 1,
-              Descrizione: 'Evento Infomat ottobre 2022',
-              Azienda: getValue('azienda'),
-              Nome: getValue('nome'),
-              Cognome: getValue('cognome'),
-              Email: getValue('email'),
-              Telefono: getValue('telefono'),
-              Data: getValue('data'),
-              Orario: getValue('orario'),
-            }),
-          }
-
-          fetch(url, options)
-            .then(() => {
-              document.getElementById('await-result').classList.add('hidden')
-              document.getElementById('submit-button').disabled = true
-              document.getElementById('success-message').classList.remove('hidden')
-            })
-            .catch(() => {
-              document.getElementById('await-result').classList.add('hidden')
-              document.getElementById('server-error').classList.remove('hidden')
-            })
-        }
-      })
-    </script>
+        <div>
+          <label class="label" for="email">
+            <span class="label-text">E-mail:</span>
+          </label>
+          <input id="email" type="email" class="input input-bordered input-md w-full" required />
+        </div>
+        <div>
+          <label class="label">
+            <span class="label-text">Data:</span>
+          </label>
+          <select id="data" class="select select-bordered w-full">
+            <option selected>25 ottobre</option>
+            <option>26 ottobre</option>
+            <option>27 ottobre</option>
+          </select>
+        </div>
+        <div>
+          <label class="label">
+            <span class="label-text">Orario:</span>
+          </label>
+          <select id="orario" class="select select-bordered w-full">
+            <option selected>9-13</option>
+            <option>14-17</option>
+          </select>
+        </div>
+        <div class="pt-8">
+          <div class="flex">
+            <input
+              id="submit-button"
+              class="btn btn-outline"
+              type="submit"
+              value="Partecipa all'evento"
+            />
+            <div class="pl-2">
+              <div id="success-message" class="label-text-alt text-success hidden">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </div>
+              <div
+                id="await-result"
+                class="animate-spin w-4 h-4 rounded-full border-2 border-transparent border-t-white hidden"
+              ></div>
+              <div id="invalid-email" class="label-text-alt text-error hidden">
+                e-mail non valida
+              </div>
+              <div id="server-error" class="label-text-alt text-error hidden">
+                riprova più tardi
+              </div>
+            </div>
+          </div>
+          <div class="pt-1">
+            <div class="label-text-alt pl-2">*compila tutti i campi</div>
+          </div>
+        </div>
+      </form>
+    </div>
   </body>
 </html>
