@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,103 +7,166 @@
     <link rel="stylesheet" href="style.css" />
     <script src="registrazione.js" defer></script>
   </head>
-  <body class="min-h-screen">
-    <div class="px-4 py-8">
-      <h1 class="text-center text-5xl">Compila il seguente form</h1>
-      <form id="form-evento" class="form-control max-w-[420px] mx-auto pt-10">
-        <div>
-          <label class="label" for="azienda">
-            <span class="label-text">Nome azienda/banca:</span>
-          </label>
-          <input id="azienda" type="text" class="input input-bordered input-md w-full" required />
+  <body
+    class="min-h-screen px-4 py-8 flex justify-center items-center"
+    style="background-image: linear-gradient(to right, #5ca2bc 40%, #1d597d)"
+  >
+    <form
+      id="form-evento"
+      class="form-control max-w-[500px] w-full p-10 rounded-[64px] shadow-2xl bg-white"
+    >
+      <div>
+        <label class="label" for="nome">
+          <span class="label-text">Nome:</span>
+        </label>
+        <input id="nome" type="text" class="input input-md w-full bg-[#deeff7]" required />
+      </div>
+      <div>
+        <label class="label" for="cognome">
+          <span class="label-text">Cognome:</span>
+        </label>
+        <input id="cognome" type="text" class="input input-md w-full bg-[#deeff7]" required />
+      </div>
+      <div>
+        <label class="label" for="azienda">
+          <span class="label-text">Società:</span>
+        </label>
+        <input id="azienda" type="text" class="input input-md w-full bg-[#deeff7]" required />
+      </div>
+      <div>
+        <label class="label" for="email">
+          <span class="label-text">E-mail:</span>
+        </label>
+        <input id="email" type="email" class="input input-md w-full bg-[#deeff7]" required />
+      </div>
+      <div>
+        <label class="label" for="telefono">
+          <span class="label-text">Numero di telefono:</span>
+        </label>
+        <input id="telefono" type="tel" class="input input-md w-full bg-[#deeff7]" required />
+      </div>
+      <div>
+        <label class="label">
+          <span class="label-text">Data:</span>
+        </label>
+        <select required id="data" class="select w-full bg-[#deeff7]">
+          <option selected>26 ottobre</option>
+          <option>27 ottobre</option>
+        </select>
+      </div>
+      <div>
+        <label class="label">
+          <span class="label-text">Orario:</span>
+        </label>
+        <select required id="orario" class="select w-full bg-[#deeff7]">
+          <option selected>9-13</option>
+          <option>14-17</option>
+        </select>
+      </div>
+      <div class="py-2 flex items-center">
+        <input id="pranzo" type="checkbox" class="checkbox" />
+        <label class="label pl-4" for="pranzo">
+          <span class="label-text">Mi fermo a pranzo (12.00-13.00)</span>
+        </label>
+      </div>
+      <div class="pt-4">
+        <div class="mb-1">
+          <div class="label-text-alt pl-2">*compila tutti i campi</div>
         </div>
-        <div class="md:flex md:gap-2">
-          <div class="flex-1">
-            <label class="label" for="nome">
-              <span class="label-text">Nome:</span>
-            </label>
-            <input id="nome" type="text" class="input input-bordered input-md w-full" required />
-          </div>
-          <div class="flex-1">
-            <label class="label" for="cognome">
-              <span class="label-text">Cognome:</span>
-            </label>
-            <input id="cognome" type="text" class="input input-bordered input-md w-full" required />
-          </div>
-        </div>
-        <div>
-          <label class="label" for="telefono">
-            <span class="label-text">Numero di telefono:</span>
-          </label>
-          <input id="telefono" type="tel" class="input input-bordered input-md w-full" required />
-        </div>
-        <div>
-          <label class="label" for="email">
-            <span class="label-text">E-mail:</span>
-          </label>
-          <input id="email" type="email" class="input input-bordered input-md w-full" required />
-        </div>
-        <div>
-          <label class="label">
-            <span class="label-text">Data:</span>
-          </label>
-          <select id="data" class="select select-bordered w-full">
-            <option selected>25 ottobre</option>
-            <option>26 ottobre</option>
-            <option>27 ottobre</option>
-          </select>
-        </div>
-        <div>
-          <label class="label">
-            <span class="label-text">Orario:</span>
-          </label>
-          <select id="orario" class="select select-bordered w-full">
-            <option selected>9-13</option>
-            <option>14-17</option>
-          </select>
-        </div>
-        <div class="pt-8">
-          <div class="flex">
-            <input
-              id="submit-button"
-              class="btn btn-outline"
-              type="submit"
-              value="Partecipa all'evento"
-            />
-            <div class="pl-2">
-              <div id="success-message" class="label-text-alt text-success hidden">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="w-6 h-6"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-              </div>
-              <div
-                id="await-result"
-                class="animate-spin w-4 h-4 rounded-full border-2 border-transparent border-t-white hidden"
-              ></div>
-              <div id="invalid-email" class="label-text-alt text-error hidden">
-                e-mail non valida
-              </div>
-              <div id="server-error" class="label-text-alt text-error hidden">
-                riprova più tardi
-              </div>
+        <div class="flex">
+          <input
+            id="submit-button"
+            class="btn bg-[#042338]"
+            type="submit"
+            value="Partecipa all'evento"
+          />
+          <div class="pl-2">
+            <div id="success-message" class="label-text-alt hidden">
+              <svg
+                class="text-success w-6"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <span>Conferma partecipazione tramite e-mail</span>
             </div>
-          </div>
-          <div class="pt-1">
-            <div class="label-text-alt pl-2">*compila tutti i campi</div>
+            <div
+              id="await-result"
+              class="animate-spin w-4 h-4 rounded-full border-2 border-transparent border-t-neutral-focus hidden"
+            ></div>
+            <div id="invalid-email" class="label-text-alt text-error hidden">e-mail non valida</div>
+            <div id="server-error" class="label-text-alt text-error hidden">riprova più tardi</div>
           </div>
         </div>
-      </form>
+      </div>
+    </form>
+    <div class="text-white ml-24 max-w-[640px]">
+      <h1 class="text-6xl font-semibold">
+        LE NUOVE <span class="text-[#8aec84]">SOLUZIONI NCR</span> PER LE BANCHE
+      </h1>
+      <div class="font-semibold">
+        <p class="bg-[#4db5f2] py-2 px-5 mt-12 text-4xl">SICUREZZA & MERCATO ITALIANO</p>
+        <div class="bg-[#4db5f2] py-2 px-5 mt-3 text-lg font-medium leading-tight">
+          <p>
+            Saremmo lieti di avervi a pranzo. Durante tutto l'evento sarà disponibile un'area
+            ristoro.
+          </p>
+          <p class="mt-4">L'evento verterà sugli aggiornamenti:</p>
+          <ul class="list-disc pl-4">
+            <li>Nuova famiglia di ATM NCR per il mercato italiano.</li>
+            <li>La sicurezza fisica, logica e come incrementarla.</li>
+            <li>La filiale bancaria e la sua evoluzione:</li>
+            <ul class="list-disc pl-4">
+              <li>Self Service in filiale (CSA)</li>
+              <li>Remotizzazione di servizi di filiale (cassiere remoto, ITM)</li>
+            </ul>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-8 grid grid-cols-2 gap-2">
+        <div class="bg-[#042338] text-white p-4 flex items-center">
+          <svg class="w-10 h-10" viewBox="0 0 24 24">
+            <path
+              fill="currentColor"
+              d="M19,19H5V8H19M16,1V3H8V1H6V3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3H18V1M17,12H12V17H17V12Z"
+            />
+          </svg>
+          <span class="pl-4 text-lg">26-27 Ottobre</span>
+        </div>
+        <div class="bg-[#042338] text-white p-4 text-center row-span-2 flex flex-col items-center">
+          <svg class="w-14 h-14" viewBox="0 0 24 24">
+            <path
+              fill="currentColor"
+              d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z"
+            />
+          </svg>
+          <div class="mt-4">
+            <div class="text-5xl">Milano</div>
+            <div>Via Tortona, 27</div>
+          </div>
+        </div>
+        <div class="bg-[#042338] text-white p-4 flex items-center">
+          <svg class="w-10 h-10" viewBox="0 0 24 24">
+            <path
+              fill="currentColor"
+              d="M12,20A7,7 0 0,1 5,13A7,7 0 0,1 12,6A7,7 0 0,1 19,13A7,7 0 0,1 12,20M12,4A9,9 0 0,0 3,13A9,9 0 0,0 12,22A9,9 0 0,0 21,13A9,9 0 0,0 12,4M12.5,8H11V14L15.75,16.85L16.5,15.62L12.5,13.25V8M7.88,3.39L6.6,1.86L2,5.71L3.29,7.24L7.88,3.39M22,5.72L17.4,1.86L16.11,3.39L20.71,7.25L22,5.72Z"
+            />
+          </svg>
+          <div class="pl-4 text-lg">
+            <div>09.00</div>
+            <div>17.00</div>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>
