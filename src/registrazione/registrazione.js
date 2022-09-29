@@ -13,7 +13,7 @@ form.addEventListener('submit', (e) => {
   const Telefono = getId('telefono').value
   const Data = getId('data').value
   const Orario = getId('orario').value
-  const Pranzo = getId('pranzo').checked
+  const Pranzo = document.querySelector('input[name="pranzo"]:checked').value
 
   getId('await-result').classList.remove('hidden')
 
@@ -43,8 +43,6 @@ form.addEventListener('submit', (e) => {
         Pranzo,
       }),
     }
-
-    console.log(getId('pranzo').checked)
 
     fetch(url, options)
       .then(() => {
